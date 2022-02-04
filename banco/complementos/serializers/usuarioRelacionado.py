@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from banco.models import Usuario, Endereco, Notificacao, Deposito, Compra
+from banco.models import Usuario, Endereco, Notificacao, Deposito, Compra, Saldo, Transferencia
 from django.contrib.auth.models import User
 
 class compraSerializer(serializers.ModelSerializer):
@@ -29,6 +29,15 @@ class usuarioSerializer(serializers.ModelSerializer):
         model = Usuario
         fields = ['numeroConta', 'nome', 'cpf']
 
+class saldoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Saldo
+        fields = ['saldo']
+
+class transferenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transferencia
+        fields = ['remetente', 'comentario', 'valor', 'destinatario']
 
 class userSerializer(serializers.ModelSerializer):
     enderecos = enderecoSerializer(many=True, read_only=True)
@@ -36,7 +45,9 @@ class userSerializer(serializers.ModelSerializer):
     usuarios = usuarioSerializer(many=True, read_only=True)
     depositos = depositoSerializer(many=True, read_only=True)
     compras = compraSerializer(many=True, read_only=True)
+    saldo = saldoSerializer(many=True, read_only=True)
+    transferencias = transferenciaSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ['username', 'usuarios', 'enderecos', 'notificacoes', 'depositos', 'compras']
+        fields = ['username', 'usuarios', 'enderecos', 'notificacoes', 'depositos', 'compras', 'saldo', 'transferencias']
