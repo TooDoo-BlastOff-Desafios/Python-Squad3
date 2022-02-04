@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     # Meus Apps
     'banco',
+    'cliente',
+    'visualizarDados',
+    'compra',
     'autenticacao.apps.AutenticacaoConfig'
 ]
 

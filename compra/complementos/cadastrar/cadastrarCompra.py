@@ -1,17 +1,17 @@
 from django.contrib.auth.models import User
-
-from banco.models import Deposito
 from compra.converterData import converterData
 
-def efetuarDeposito(dadosAnalisados):
+from compra.models import Compra
+
+def efetuarCompra(dadosAnalisados):
     login = User.objects.get(username=dadosAnalisados['login'])
-    
+
     dataConvertida = converterData(dadosAnalisados['data'])
-    
-    salvarDeposito = Deposito(
+
+    salvarCompra = Compra(
         descricao = dadosAnalisados['descricao'],
         valor = dadosAnalisados['valor'],
         data = dataConvertida,
         usuario = login
     )
-    salvarDeposito.save()
+    salvarCompra.save()

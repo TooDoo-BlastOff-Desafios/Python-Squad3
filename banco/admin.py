@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import Usuario, Endereco, Notificacao, Transferencia
+from .models import Transferencia, Saldo, Deposito
 
-admin.site.register(Usuario)
-admin.site.register(Endereco)
-admin.site.register(Notificacao)
 admin.site.register(Transferencia)
+admin.site.register(Saldo)
+admin.site.register(Deposito)
