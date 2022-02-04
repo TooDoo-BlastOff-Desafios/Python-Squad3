@@ -4,18 +4,8 @@ from rest_framework import generics
 from datetime import date
 
 from .models import Notificacao
-from .complementos.serializers import notificacaoSerializer, usuarioRelacionado
+from .complementos.serializers import notificacaoSerializer
 from .complementos.serializers import telaInicio
-
-
-class mostrarUsuarios(generics.ListAPIView):
-    serializer_class = usuarioRelacionado.userSerializer
-
-    def get_queryset(self):
-        
-        query_set = User.objects.filter(username=self.request.user )
-        
-        return query_set
 
 class telaInicio(generics.ListAPIView):
     serializer_class = telaInicio.telaInicioSerializer
